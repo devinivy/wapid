@@ -25,45 +25,7 @@ exports.register = function(plugin, options, next) {
         }
     });
     
-    // Load quote fixtures
-    var quoteFixtures = require('./fixtures.js');
-    async.each(quoteFixtures, function(item, cb) {
-        
-        // Look for a quote...
-        Quotes.findOne(item.id)
-        .then(function(quote) {
-            
-            if (!quote) {
-                
-                // ... then create it if necessary!
-                return Quotes.create(item)
-                        .then(function(quote){
-                            return null;
-                        });
-                
-            } else {
-                
-                if (quote.saidBy !== item.saidBy ||
-                    quote.quotation !== item.quotation) {
-                    
-                        // ... then update it if necessary!
-                        return Quotes.update(quote.id, item)
-                                .then(function(quotes){
-                                    return null;
-                                });
-                                
-                } else {
-                    return null;
-                }
-            }
-            
-        })
-        .then(cb);
-        
-    }, function(err) {
-        if (err) throw err;
-        next();
-    });
+    next();
     
 }
 

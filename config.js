@@ -1,5 +1,5 @@
-var path = require('path'),
-rootPath = path.normalize(__dirname);
+var Path = require('path'),
+rootPath = Path.normalize(__dirname);
 
 module.exports = {
     
@@ -44,7 +44,11 @@ module.exports = {
                 }
                 
             }
-        ]
+        ],
+        data: {
+            dir: Path.normalize(__dirname + '/arch-api/lib'),
+            pattern: 'fixtures.js'
+        }
     }
     
 }
