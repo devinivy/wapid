@@ -9,8 +9,8 @@ module.exports = {
     
     server: {
         web: {
-            host: 'localhost',
-            port: process.env.PORT || 3000,
+            host: process.env.WEB_HOST || 'localhost',
+            port: process.env.WEB_PORT || 3000,
             views: {
                 path: rootPath + '/arch-web/views',
                 engines: {
